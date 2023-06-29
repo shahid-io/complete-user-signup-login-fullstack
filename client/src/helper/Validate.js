@@ -29,6 +29,7 @@ export async function regsiterValidate(values) {
   return errors;
 }
 
+<<<<<<< HEAD
 /** profile validate */
 export async function profileValidate(values) {
   const errors = emailVerify({}, values);
@@ -52,12 +53,21 @@ function mobileVerify(error = {}, values) {
 
 /** validate email */
 
+=======
+/* ************************* */
+
+/** validate email */
+>>>>>>> 4963fa01fa1b59f78160f8adac3ed3beee6194e7
 function emailVerify(error = {}, values) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!values.email) {
     error.email = toast.error("Email requires..!");
   } else if (values.email.includes(" ")) {
+<<<<<<< HEAD
     error.email = toast.error("Wrong email..!");
+=======
+    error.email = toast.error("Wring email..!");
+>>>>>>> 4963fa01fa1b59f78160f8adac3ed3beee6194e7
   } else if (!emailRegex.test(values.email)) {
     error.email = toast.error("Invalid email address..!");
   }
