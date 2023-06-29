@@ -30,7 +30,7 @@ const router = createBrowserRouter([
     element: <Profile></Profile>,
   },
   {
-    path: "/rest",
+    path: "/reset",
     element: <Reset></Reset>,
   },
   {
