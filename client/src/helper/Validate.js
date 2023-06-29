@@ -29,15 +29,35 @@ export async function regsiterValidate(values) {
   return errors;
 }
 
+/** profile validate */
+export async function profileValidate(values) {
+  const errors = emailVerify({}, values);
+  mobileVerify(errors, values);
+  return errors;
+}
+
 /* ************************* */
+/** validate mobile number*/
+function mobileVerify(error = {}, values) {
+  const mobileNumberRegex = /^[0-9]{10}$/;
+  if (!values.mobile) {
+    error.mobile = toast.error("mobile number requires..!");
+  } else if (values.mobile.includes(" ")) {
+    error.mobile = toast.error("Wrong mobile number..!");
+  } else if (!mobileNumberRegex.test(values.mobile)) {
+    error.mobile = toast.error("Invalid mobile number..!");
+  }
+  return error;
+}
 
 /** validate email */
+
 function emailVerify(error = {}, values) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!values.email) {
     error.email = toast.error("Email requires..!");
   } else if (values.email.includes(" ")) {
-    error.email = toast.error("Wring email..!");
+    error.email = toast.error("Wrong email..!");
   } else if (!emailRegex.test(values.email)) {
     error.email = toast.error("Invalid email address..!");
   }
